@@ -15,7 +15,7 @@ Future<Response> onRequest(RequestContext context, String code) async {
 
   if (sbUrl.isEmpty || sbKey.isEmpty) {
     return Response.json(
-      statusCode: HttpStatus.internalServerError,
+      statusCode: 500,
       body: {'Supabase keys not configured.'},
     );
   }
@@ -49,7 +49,7 @@ Future<Response> onRequest(RequestContext context, String code) async {
     }
   } catch (e) {
     return Response.json(
-      statusCode: HttpStatus.internalServerError,
+      statusCode: 500,
       body: {'An unexpected error occurred.'},
     );
   }
