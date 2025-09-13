@@ -48,7 +48,7 @@ Future<Response> onRequest(RequestContext context) async {
     print('Response from Supabase: $r');
     if (r.isNotEmpty) {
       final existingShortCode = r[0]['short_code'];
-      return Response.json(body: {'short_url': 'https://ziplink.com/$existingShortCode'});
+      return Response.json(body: {'short_url': existingShortCode});
     }
 
     final shortCode = _generateShortCode();
@@ -70,7 +70,7 @@ Future<Response> onRequest(RequestContext context) async {
     }
 
     // Return the shortened URL to the client.
-    return Response.json(body: {'short_url': 'https://ziplink.com/$shortCode'});
+    return Response.json(body: {'short_url': shortCode});
 
   } catch (e) {
     // Handle any errors during the database operation.
